@@ -413,15 +413,6 @@ ALL_MODELS = [
             NLG_PREFIX_TAG,
         ],
     ),
-    # H3 model
-    Model(
-        group="together",
-        creator_organization="HazyResearch",
-        name="together/h3-2.7b",
-        display_name="H3 (2.7B)",
-        description="H3 (2.7B parameters) is a decoder-only language model based on state space models.",
-        tags=[TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG, GPT2_TOKENIZER_TAG],
-    ),
     # OPT
     Model(
         group="together",
@@ -752,6 +743,23 @@ ALL_MODELS = [
         description="Pathways Language Model (540B parameters) is trained using 6144 TPU v4 chips "
         "([paper](https://arxiv.org/pdf/2204.02311.pdf)).",
         tags=[TEXT_MODEL_TAG, LIMITED_FUNCTIONALITY_TEXT_MODEL_TAG],
+    ),
+    # Safari
+    Model(
+        group="safari",
+        creator_organization="HazyResearch",
+        name="together/h3-2.7b",
+        display_name="H3 (2.7B)",
+        description="H3 (2.7B parameters) is a decoder-only language model based on state space models.",
+        tags=[TEXT_MODEL_TAG, FULL_FUNCTIONALITY_TEXT_MODEL_TAG, GPT2_TOKENIZER_TAG],
+    ),
+    Model(
+        group="safari",
+        creator_organization="HazyResearch",
+        name="safari/badger-150m",
+        display_name="Badger (150M)",
+        description="Badger (150M parameters) is a small language model trained on The Pile for 300B tokens ",
+        tags=[TEXT_MODEL_TAG, GPT4_CONTEXT_WINDOW_TAG],
     ),
     # For debugging
     Model(

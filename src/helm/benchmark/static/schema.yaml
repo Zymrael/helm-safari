@@ -504,6 +504,15 @@ models:
     num_parameters: 100000000000
     release_date: 2022-06-23
 
+  # Safari 
+  - name: safari/badger-150m
+    display_name: Badger (150M)
+    description: Badger (150M parameters) is a small model trained on The Pile for 300B tokens.
+    creator_organization: Stanford
+    access: open
+    num_parameters: 150000000
+    release_date: 2023-04-22
+
 ############################################################
 adapter:
   - name: method

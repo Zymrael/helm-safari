@@ -32,6 +32,7 @@ from .remote_window_service import get_remote_window_service
 from .t0pp_window_service import T0ppWindowService
 from .t511b_window_service import T511bWindowService
 from .flan_t5_window_service import FlanT5WindowService
+from .safari_window_service import SafariWindowService
 from .ul2_window_service import UL2WindowService
 from .yalm_window_service import YaLMWindowService
 from .window_service import WindowService
@@ -80,6 +81,8 @@ class WindowServiceFactory:
                 window_service = LuminousWorldWindowService(service)
             else:
                 raise ValueError(f"Unhandled Aleph Alpha model: {engine}")
+        elif organization == "safari":
+            window_service = SafariWindowService(service)
         elif organization == "microsoft":
             window_service = MTNLGWindowService(service)
         elif organization == "anthropic":

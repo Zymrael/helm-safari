@@ -30,6 +30,7 @@ from .openai_client import OpenAIClient
 from .microsoft_client import MicrosoftClient
 from .perspective_api_client import PerspectiveAPIClient
 from .yalm_tokenizer_client import YaLMTokenizerClient
+from .safari_client import SafariClient
 from .simple_client import SimpleClient
 from helm.proxy.clients.huggingface_model_registry import get_huggingface_model_config
 
@@ -117,6 +118,8 @@ class AutoClient(Client):
                 client = GoogleClient(cache_config=cache_config)
             elif organization == "together":
                 client = TogetherClient(api_key=self.credentials.get("togetherApiKey", None), cache_config=cache_config)
+            elif organization == "safari":
+                client = SafariClient(cache_config=cache_config)
             elif organization == "simple":
                 client = SimpleClient(cache_config=cache_config)
             else:

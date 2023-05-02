@@ -72,3 +72,12 @@ colorcet~=3.0.1
 matplotlib~=3.6.0
 numpy~=1.23.3
 seaborn~=0.11.0
+
+# safari 
+einops
+hydra-core=1.3.2
+omegaconf
+opt_einsum
+rich
+flash_attn~=1.0.4
+pytorch-lightning==1.8.6

@@ -12,9 +12,9 @@ from helm.proxy.clients.remote_model_registry import check_and_register_remote_m
 from helm.proxy.services.remote_service import create_authentication, add_service_args
 
 from helm.benchmark.adaptation.adapter_spec import AdapterSpec
-from .executor import ExecutionSpec
-from .runner import Runner, RunSpec
-from .run_specs import construct_run_specs
+from helm.benchmark.executor import ExecutionSpec
+from helm.benchmark.runner import Runner, RunSpec
+from helm.benchmark.run_specs import construct_run_specs
 
 
 LATEST_SYMLINK: str = "latest"
