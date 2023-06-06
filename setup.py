@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 def get_requirements(path: str):
     requirements = []
     for line in open(path):
-        if not line.startswith('-r'):
+        if not line.startswith("-r"):
             requirements.append(line.strip())
     return requirements
 
@@ -28,7 +28,7 @@ setup(
     python_requires="~=3.8",
     include_package_data=True,
     package_dir={"": "src"},
-    install_requires=get_requirements("requirements.txt"),
+    # install_requires=get_requirements("requirements.txt"),
     entry_points={
         "console_scripts": [
             "helm-run=helm.benchmark.run:main",

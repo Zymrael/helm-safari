@@ -124,6 +124,7 @@ class AutoClient(Client):
                 client = SimpleClient(cache_config=cache_config)
             else:
                 raise ValueError(f"Could not find client for model: {model}")
+
             self.clients[model] = client
         return client
 

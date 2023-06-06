@@ -111,8 +111,8 @@ class HuggingFaceServer:
                 }
             )
 
-        pmp = raw_request["prompt"]
-        print(f"Prompt: {pmp}, Completion: {all_decoded_text}")
+        # pmp = raw_request["prompt"]
+        # print(f"Prompt: {pmp}, Completion: {all_decoded_text}")
 
         return {"completions": completions, "input_length": len(encoded_input.input_ids[0])}
 
@@ -136,6 +136,14 @@ class HuggingFaceClient(Client):
             elif model == "bigcode/santacoder":
                 self.model_server_instances[model] = HuggingFaceServer(
                     HuggingFaceModelConfig.from_string("bigcode/santacoder")
+                )
+            elif model == "huggingface/pythia-160m-v0":
+                self.model_server_instances[model] = HuggingFaceServer(
+                    HuggingFaceModelConfig.from_string("EleutherAI/pythia-160m-v0")
+                )
+            elif model == "huggingface/gpt-neo-125m":
+                self.model_server_instances[model] = HuggingFaceServer(
+                    HuggingFaceModelConfig.from_string("EleutherAI/gpt-neo-125M")
                 )
             else:
                 raise Exception(f"Unknown HuggingFace model: {model}")

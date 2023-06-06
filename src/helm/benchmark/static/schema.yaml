@@ -209,7 +209,18 @@ models:
     access: open
     num_parameters: 20000000000
     release_date: 2022-02-02
-
+  - name: huggingface/pythia-160m-v0
+    display_name: Pythia 160m
+    description: Trained on The Pile ([paper](https://arxiv.org/pdf/2204.06745.pdf)).
+    creator_organization: EleutherAI
+    access: open
+    num_parameters: 160000000
+  - name: huggingface/gpt-neo-125m
+    display_name: GPTNeo 125m
+    description: Trained on The Pile ([paper](https://arxiv.org/pdf/2204.06745.pdf)).
+    creator_organization: EleutherAI
+    access: open
+    num_parameters: 160000000
   # Google
   - name: together/t5-11b
     display_name: T5 (11B)

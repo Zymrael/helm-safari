@@ -39,6 +39,8 @@ from src.models.sequence.long_conv_lm import ConvLMHeadModel
 from src.utils.generation import generate
 from transformers import AutoModelForCausalLM, GPT2Tokenizer
 
+from src.utils import registry
+from src.utils.config import instantiate
 
 model_name_to_ckpt_path = {"safari/badger-150m": "/mnt/checkpoints/honey-badger150M-300B.ckpt"}
 
@@ -53,11 +55,12 @@ class SafariServer:
         self.model, self.tokenizer = self.initialize_model_and_tokenizer(self.config)
 
     def load_config(self, model_name: str):
-        path = os.path.join(SAFARI_PATH, "configs/evals/", f"{model_name}.yaml")
+        path = os.path.join("./configs/models/", f"{model_name}.yaml")
         config = yaml.load(open(path, "r"), Loader=yaml.FullLoader)
         return config
 
     def initialize_model_and_tokenizer(self, model_config: Dict):
+        print(model_config)
         model = ConvLMHeadModel(**model_config["model_config"]).to(self.device)
 
         ckpt = torch.load(model_name_to_ckpt_path[self.model_name], map_location=self.device)
@@ -67,6 +70,13 @@ class SafariServer:
 
         self.l_max = model_config["model_config"]["layer"]["l_max"]
         tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+
+        postprocess_cfg = model_config.get("postprocess_cfg", {})
+        if len(postprocess_cfg) > 0:
+            print("Postprocessing model...")
+            postprocess_fn = instantiate(registry.postprocess_methods, postprocess_cfg)
+            postprocess_fn.process(model, model_config["model_config"])
+
         return model, tokenizer
 
     def get_model_and_tokenizer(self):

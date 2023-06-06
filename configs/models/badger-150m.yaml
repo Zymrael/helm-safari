@@ -21,3 +21,12 @@ model_config:
   fused_dropout_add_ln: True
   residual_in_fp32: True
   pad_vocab_size_multiple: 8
+
+postprocess_cfg:
+  _name_: distill-conv
+  distill_path: /mnt/safari-internal/artifacts/laughing_hyena/distilled/badger/modal/4/
+  distill_cfg:
+    _name_: laughing-hyena-modal-filter
+    order: 4
+    num_filters: 108
+    real_fft: False
